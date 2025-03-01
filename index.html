@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endocrinology Discussion (3)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            user-select: none; /* يمنع تحديد النص */
+            -webkit-user-select: none; /* لمتصفحات WebKit مثل Chrome وSafari */
+            -moz-user-select: none; /* لمتصفح Firefox */
+            -ms-user-select: none; /* لمتصفح Internet Explorer/Edge */
+        }
+        @media print { /* إخفاء الصفحة عند الطباعة */
+            body { 
+                display: none;
+            }
+        }
+
+        .quiz-container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .timer {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+        .incorrect {
+            color: red;
+        }
+        .correct {
+            color: green;
+        }
+        .question-result {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        img {
+            pointer-events: none; /* يمنع سحب الصور */
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Endocrinology Discussion (3)</h1>
+        <div class="timer" id="timer">Time remaining: 60 seconds</div>
+
+        <div class="question" id="question-1">
+            <p>Which one of the following statements regarding maturity-onset diabetes of the young (MODY) is true?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="1"> There is usually a strong family history</label>
+                <label><input type="radio" name="q1" value="2"> Body mass index is typically > 30</label>
+                <label><input type="radio" name="q1" value="3"> Doesn't respond to glimepiride</label>
+                <label><input type="radio" name="q1" value="4"> Autosomal recessive inheritance</label>
+                <label><input type="radio" name="q1" value="5"> Frequent episodes of diabetic ketoacidosis are typical</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-2">
+            <p>A 25-year-old male develops type 2 diabetes mellitus. Which one of the following genes is most likely to be responsible?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="1"> HNF-1 alpha</label>
+                <label><input type="radio" name="q2" value="2"> HNF-4 alpha</label>
+                <label><input type="radio" name="q2" value="3"> HNF-1 beta</label>
+                <label><input type="radio" name="q2" value="4"> IPF-1</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <p>Which one of the following specific membrane glucose transporters is present in the highest concentration in pancreatic beta cells?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="1"> GLUT 1</label>
+                <label><input type="radio" name="q3" value="2"> GLUT 2</label>
+                <label><input type="radio" name="q3" value="3"> GLUT 4</label>
+                <label><input type="radio" name="q3" value="4"> GLUT 5</label>
+                <label><input type="radio" name="q3" value="5"> Sodium-dependent glucose transporter</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-4">
+            <p>A 55-year-old female is reviewed in the diabetes clinic. The following results are obtained: Urinalysis protein + HbA1c 10.0% What average blood glucose level for the past 2 months is this most likely to represent?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="1"> 9</label>
+                <label><input type="radio" name="q4" value="2"> 10</label>
+                <label><input type="radio" name="q4" value="3"> 11</label>
+                <label><input type="radio" name="q4" value="4"> 15</label>
+                <label><input type="radio" name="q4" value="5"> There is no relation between HbA1c and average blood glucose</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-5">
+            <p>A 54-year-old man is reviewed shortly after being diagnosed with hypertension, as part of his work-up he had a series of blood tests to screen for other risk factors Na 142 mmol/l K+ 3.9 mmol/l Urea 6.2 mmol/l Creatinine 91 umol/l Fasting glucose 7.7 mmol/l Total cholesterol 7.2 mmol/l Based on the fasting glucose result you arrange a HbA1c: HbAlc 31 mmol/mol (5.0%) Which one of the following would explain the discrepancy between the HbA1c and fasting glucose levels?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="1"> Vitamin B12 deficiency</label>
+                <label><input type="radio" name="q5" value="2"> Conn's syndrome</label>
+                <label><input type="radio" name="q5" value="3"> Raised cholesterol level</label>
+                <label><input type="radio" name="q5" value="4"> Sickle-cell anaemia</label>
+                <label><input type="radio" name="q5" value="5"> A history of alcohol excess</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-6">
+            <p>Commonest cause of coma in a diabetic is:</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="1"> Diabetic ketoacidosis</label>
+                <label><input type="radio" name="q6" value="2"> Lactic acidosis</label>
+                <label><input type="radio" name="q6" value="3"> Hyperosmolar coma</label>
+                <label><input type="radio" name="q6" value="4"> Hypoglycaemia</label>
+                <label><input type="radio" name="q6" value="5"> Uremic coma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-7">
+            <p>A 47-year-old woman is referred to the general medical clinic. She has gained 10 kg in weight in the past 3 months but her main problem is episodic sweating. These episodes of sweating are associated with double vision and typically occur early in the morning. Clinical examination is unremarkable. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="1"> Bronchial carcinoid</label>
+                <label><input type="radio" name="q7" value="2"> Hashimoto's thyroiditis</label>
+                <label><input type="radio" name="q7" value="3"> Menopause</label>
+                <label><input type="radio" name="q7" value="4"> Cushing's syndrome</label>
+                <label><input type="radio" name="q7" value="5"> Insulinoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-8">
+            <p>Patient laboratory results after fasting are .. high insulin, high proinsulin and high C peptide.. Which diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="1"> Insulinoma</label>
+                <label><input type="radio" name="q8" value="2"> Sulfonylurea abuse</label>
+                <label><input type="radio" name="q8" value="3"> Factitious hypoglycemia</label>
+                <label><input type="radio" name="q8" value="4"> Glucagonoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-9">
+            <p>In patients with suspected insulinoma, which one of the following is considered the best investigation?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="1"> Oral glucose tolerance test</label>
+                <label><input type="radio" name="q9" value="2"> Insulin tolerance test</label>
+                <label><input type="radio" name="q9" value="3"> Early morning C-peptide levels</label>
+                <label><input type="radio" name="q9" value="4"> Glucagon stimulation test</label>
+                <label><input type="radio" name="q9" value="5"> Supervised 72 hours fasting</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-10">
+            <p>A 55-year-old female presents with episodic sweats and tremors associated with double vision and typically occurs early in the morning which are relieved by glucose. She has recently gained approximately 8 kg in weight and drinks approximately 10 units of alcohol weekly. Her investigations show normal full blood count, normal urea and electrolytes and a fasting plasma glucose concentration of 50 mg/dl. What is the most appropriate investigation for this patient?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="1"> CT scan of pancreas</label>
+                <label><input type="radio" name="q10" value="2"> EEG</label>
+                <label><input type="radio" name="q10" value="3"> Insulin and C-peptide levels during hypoglycemic episode</label>
+                <label><input type="radio" name="q10" value="4"> Oral glucose tolerance test</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-11">
+            <p>11- An 18-year-old girl is admitted to the Emergency Department with an episode of sweating and dizziness. She is brought in by her father who has type 2 diabetes mellitus as he is worried she may be diabetic. He describes a number of similar episodes for the past two weeks. Her BM on admission is 1.9 mmol/l so the following bloods are taken:
+            Plasma glucose 1.8 mmol/l
+            Insulin 15 mg/ml (6-10 mg/ml)
+            Proinsulin 22% (22-24%)
+            C-peptide 0.15 nmol/l (0.2-0.4 nmol/l)
+            What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="Diabetes mellitus"> Diabetes mellitus</label>
+                <label><input type="radio" name="q11" value="Insulinoma"> Insulinoma</label>
+                <label><input type="radio" name="q11" value="Nesidioblastosis"> Nesidioblastosis</label>
+                <label><input type="radio" name="q11" value="Insulin abuse"> Insulin abuse</label>
+                <label><input type="radio" name="q11" value="Sulfonylurea abuse"> Sulfonylurea abuse</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-12">
+            <p>12- An 35 year old woman with no past medical history and on no regular medications is admitted to hospital following a collapse at home. She describes prodromal symptoms of palpitations, weakness and diplopia. Plasma glucose concentration is measured at 2.3 mmol/L (41 mg/dl). Plasma samples are taken on admission, showing C-peptide <0.66 nmol/L (<2 ng/ml) and Insulin 18 mg/ml (6-10 mg/ml). What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="Alcohol"> Alcohol</label>
+                <label><input type="radio" name="q12" value="Critical illness"> Critical illness</label>
+                <label><input type="radio" name="q12" value="Exogenous insulin"> Exogenous insulin</label>
+                <label><input type="radio" name="q12" value="Insulinoma"> Insulinoma</label>
+                <label><input type="radio" name="q12" value="Sulphonylurea ingestion"> Sulphonylurea ingestion</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-13">
+            <p>13- Gluconeogenesis is a process of generation of glucose from non-glucose source, such as amino-acids, glycerol, fatty acids, and lactate.
+            Which one of the following organs participate in the process of gluconeogenesis in human beings?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="Liver and adipose tissue"> Liver and adipose tissue</label>
+                <label><input type="radio" name="q13" value="Liver and kidney"> Liver and kidney</label>
+                <label><input type="radio" name="q13" value="Liver and pancreas"> Liver and pancreas</label>
+                <label><input type="radio" name="q13" value="Pancreas and adipose tissue"> Pancreas and adipose tissue</label>
+                <label><input type="radio" name="q13" value="Pancreas and muscles"> Pancreas and muscles</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-14">
+            <p>14- A 58-year-old man with a 12-year history of type 2 diabetes mellitus complains of an ulcer in his right foot. Physical examination reveals a 1 cm irregular ulceration over the right metatarsal head, surrounded by an area of black gangrenous skin. The patient is admitted to the hospital and undergoes amputation of the right forefoot. Which of the following measures would have been most effective in preventing this complication?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="Appropriate instructions on self-care of the feet"> Appropriate instructions on self-care of the feet</label>
+                <label><input type="radio" name="q14" value="Doppler examination of the lower extremities"> Doppler examination of the lower extremities</label>
+                <label><input type="radio" name="q14" value="Local application of platelet-derived growth factor"> Local application of platelet-derived growth factor</label>
+                <label><input type="radio" name="q14" value="Neurophysiologic and electromyographic studies"> Neurophysiologic and electromyographic studies</label>
+                <label><input type="radio" name="q14" value="Prophylactic treatment with cholesterol-lowering agents"> Prophylactic treatment with cholesterol-lowering agents</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-15">
+            <p>15- A 17-year-old female model is referred with a six month history of amenorrhoea and weight loss, for which no organic cause can be found. Which of the following features would support your diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="Delusion of being overweight"> Delusion of being overweight</label>
+                <label><input type="radio" name="q15" value="Delusions of poisoning"> Delusions of poisoning</label>
+                <label><input type="radio" name="q15" value="Hypergonadotropic hypogonadism"> Hypergonadotropic hypogonadism</label>
+                <label><input type="radio" name="q15" value="Hypotrichosis"> Hypotrichosis</label>
+                <label><input type="radio" name="q15" value="Watery diarrhoea"> Watery diarrhoea</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-16">
+            <p>16- Anorexia nervosa is not associated with:</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="Hypokalemia"> Hypokalemia</label>
+                <label><input type="radio" name="q16" value="Primary amenorrhoea"> Primary amenorrhoea</label>
+                <label><input type="radio" name="q16" value="Exclusively in females"> Exclusively in females</label>
+                <label><input type="radio" name="q16" value="Low FSH and LH"> Low FSH and LH</label>
+                <label><input type="radio" name="q16" value="Thyroxine level"> Thyroxine level</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-17">
+            <p>17- 22 years old woman is brought to hospital because of syncope. There were no warming symptoms. She was fine after the event. Recently, she has lost 25 kg because of an eating disorder. She looks unwell and has little muscle bulk.
+            Blood pressure 80/50 and pulse 50 b/ min. Which of the following is the most likely abnormality on her ECG ?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="Resting sinus tachycardia"> Resting sinus tachycardia</label>
+                <label><input type="radio" name="q17" value="Increased QRS voltage"> Increased QRS voltage</label>
+                <label><input type="radio" name="q17" value="Short QT interval"> Short QT interval</label>
+                <label><input type="radio" name="q17" value="Increased T wave"> Increased T wave</label>
+                <label><input type="radio" name="q17" value="Prolonged QT interval"> Prolonged QT interval</label>
+            </div>
+        </div>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Submit Quiz</button>
+
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <div id="score"></div>
+            <div id="answers-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة حدث للكيبورد لمنع حفظ الصفحة
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                alert("تم منع حفظ الصفحة!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع فتح أدوات المطور
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                alert("تم تعطيل أدوات المطور!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع النقر بزر اليمين
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // يمنع فتح قائمة السياق
+            alert("النقر بزر الماوس الأيمن غير مسموح به.");
+        });
+
+        let currentQuestion = 1;
+        const totalQuestions = 17;
+        let score = 0;
+        let timerInterval;
+        const answers = {
+            q1: "There is usually a strong family history",
+            q2: "HNF-1 alpha",
+            q3: "GLUT 2",
+            q4: "15",
+            q5: "Sickle-cell anaemia",
+            q6: "Hypoglycaemia",
+            q7: "Insulinoma",
+            q8: "Insulinoma",
+            q9: "Supervised 72 hours fasting",
+            q10: "Insulin and C-peptide levels during hypoglycemic episode",
+            q11: "Insulin abuse",
+            q12: "Exogenous insulin",
+            q13: "Liver and kidney",
+            q14: "Appropriate instructions on self-care of the feet",
+            q15: "Delusion of being overweight",
+            q16: "Exclusively in females",
+            q17: "Prolonged QT interval"
+        };
+
+        function showQuestion() {
+            document.querySelectorAll('.question').forEach((q, index) => {
+                q .style.display = index + 1 === currentQuestion ? 'block' : 'none';
+            });
+            document.getElementById('nextBtn').style.display = currentQuestion < totalQuestions ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            clearInterval(timerInterval);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            let timeRemaining = 60;
+            document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    if (currentQuestion < totalQuestions) {
+                        nextQuestion();
+                    } else {
+                        evaluateQuiz();
+                    }
+                }
+            }, 1000);
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            let summary = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const questionElement = document.getElementById(`question-${i}`);
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                let questionSummary = `<p><strong>Question ${i}: </strong>${questionElement.querySelector('p').innerText}</p>`;
+
+                options.forEach(option => {
+                    const optionLabel = option.parentElement;
+                    if (option.value === correctAnswer) {
+                        optionLabel.style.color = 'green';
+                    } else if (selectedOption && selectedOption.value === option.value) {
+                        optionLabel.style.color = 'red';
+                    }
+                });
+
+                questionSummary += `<div>Answer: <strong>${selectedOption ? selectedOption.value : 'None selected'}</strong></div>`;
+                questionSummary += `<div>Correct answer: <strong>${correctAnswer}</strong></div>`;
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    summary += questionSummary + `<p class="correct">Correct</p>`;
+                } else {
+                    summary += questionSummary + `<p class="incorrect">Incorrect</p>`;
+                }
+            }
+
+            document.getElementById('score').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('answers-summary').innerHTML = summary;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('timer').style.display = 'none'; 
+            document.querySelectorAll('.question').forEach((q) => q.style.display = 'none');
+
+            clearInterval(timerInterval);
+        }
+
+        window.onload = function() {
+            showQuestion();
+            startTimer();
+        };
+        
+        
+        function nextQuestion() {
+    // Increase the current question counter
+            currentQuestion++;
+
+            // Reset the timer
+            clearInterval(timerInterval); // Stop the current timer
+            startTimer(); // Start the timer from the beginning
+
+            // Show the next question
+            showQuestion();
+        }
+        
+    </script>
+</body>
+</html>
